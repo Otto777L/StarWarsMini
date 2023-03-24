@@ -3,14 +3,10 @@ import { Link } from "react-router-dom";
 
 export const Navbar = () => {
 	return (
-		<nav className="navbar navbar-light bg-light mb-3">
-			<Link to="/">
-				<span className="navbar-brand mb-0 h1">React Boilerplate</span>
-			</Link>
-			<div className="ml-auto">
-				<Link to="/demo">
-					<button className="btn btn-primary">Check the Context in action</button>
-				</Link>
+		<nav className="navbar navbar-light mb-3 justify-content-between">
+				<img className="ms-5" src="https://www.muraldecal.com/en/img/as555-jpg/folder/products-listado-merchanthover/wall-stickers-star-wars-logo.jpg" style={{width: "100px", height: "100px"}}/>
+			<div className="me-5">
+					<button className="btn btn-primary">Favorites</button>
 			</div>
 		</nav>
 	);
