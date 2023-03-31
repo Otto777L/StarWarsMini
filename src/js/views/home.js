@@ -56,6 +56,14 @@ export const Home = () => {
 							return <InfoCards key={index} item={planet} type="planets"/>
 							})}
 					</div>
+				</div>				
+				<h1>Vehicles</h1>
+				<div className="container">
+					<div className="d-flex flex-nowrap overflow-auto row">					
+							{vehicleList && vehicleList.map((vehicle, index)=>{
+							return <InfoCards key={index} item={vehicle} type="vehicles"/>
+							})}
+					</div>
 				</div>
 			</div>)
 };
