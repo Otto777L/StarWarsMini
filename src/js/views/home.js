@@ -1,13 +1,17 @@
-import React, {useEffect, useState} from "react";
+import React, {useContext, useEffect, useState} from "react";
 import rigoImage from "../../img/rigo-baby.jpg";
 import "../../styles/home.css";
 import { InfoCards } from "../component/InfoCards";
+import { Context } from "../store/appContext";
 
 export const Home = () => {
 
+
+	const {store, actions} = useContext(Context);
 	const [charList, setCharList] = useState();// en la izquierda esta la variable y la derecha es la funcion que la modifica!
 	const [planetsList, setPlanetsList] = useState();
 	const [vehicleList, setVehicleList] = useState();
+	const [favIDList, setFavIDList] = useState([]);
 
 		/*startList: Inicia la lista (siempre debe existir un elemento, hay condicionales para 
 		mostrar vacia la lista mientras solo tenga el elemento inicial con el que se creó)*/
@@ -19,7 +23,7 @@ export const Home = () => {
 			const responseVehicle = fetch('https://www.swapi.tech/api/vehicles');
 			let [characters, planets, vehicles] = await Promise.all([responseChar, responsePlanet, responseVehicle]);
 			if (characters.ok) {				
-				let body = await characters.json(); // con let solo existe dentro de este pedazo de codigo, buscar hoisting
+				let body = await characters.json(); // con let solo existe dentro de este pedazo de codigo, buscar hoisting				
 				setCharList(body.results);
 			}
 			if (planets.ok) {
@@ -28,7 +32,7 @@ export const Home = () => {
 			}
 			if (vehicles.ok) {
 				let body = await vehicles.json();
-				setVehicleList(body.results)
+				setVehicleList(body.results);
 			}
 		} catch (error) {
 			
@@ -36,9 +40,13 @@ export const Home = () => {
 	}
 
 	useEffect(() => {
-		getData();
+		getData();	
 	  }, []);
-	
+
+
+	function isFavoriteChar(favID) {		
+		
+	}
 	
 	return (<div className="ms-5">
 				<h1>Characters</h1>

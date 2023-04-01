@@ -13,7 +13,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 					initial: "white"
 				}
 			],
-			details: {}
+			details: {},
+			favorites: []
 		},
 		actions: {
 			// Use getActions to call a function within a fuction
@@ -49,6 +50,17 @@ const getState = ({ getStore, getActions, setStore }) => {
 				} catch (error) {
 					console.log(error);
 				}
+			},
+			addFavorite: (DetailData, type) => {
+				const store = getStore();
+				DetailData = 
+				{
+					...DetailData,
+					type: type,
+					favorite: true					
+				}
+				let tempData = [...store.favorites, DetailData];
+				setStore({favorites: tempData});
 			}
 		}
 	};
