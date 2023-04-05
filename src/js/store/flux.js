@@ -61,6 +61,10 @@ const getState = ({ getStore, getActions, setStore }) => {
 				}
 				let tempData = [...store.favorites, DetailData];
 				setStore({favorites: tempData});
+			},
+			deleteFavorite: (name) => {
+				const auxList = getStore().favorites.filter((favorite, position) => favorite.name != name);
+      			setStore({favorites: auxList});
 			}
 		}
 	};
